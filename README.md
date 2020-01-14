@@ -5,9 +5,9 @@ The intent of this repo is to implement PPO in Pytorch in a minimal amount of co
 ## What's included?
 
 - Network Structures
-  - [x] MLP Policy
-  - [x] LSTM Policy
-  - [x] GRU Policy
+  - [x] Feedforward
+  - [x] LSTM
+  - [x] GRU
   - [ ] Conv Policy
 - Action Spaces
   - [x] Categorical Action Spaces
