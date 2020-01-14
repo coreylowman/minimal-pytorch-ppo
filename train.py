@@ -17,7 +17,8 @@ def gather_training_data(env, policy, num_games=50, max_steps=100):
         obs = env.reset()
         hx = policy.get_init_hx()
         for _ in range(max_steps):
-            step_logits, step_value, new_hx = policy(torch.from_numpy(obs).float(), hx)
+            with torch.no_grad():
+                step_logits, step_value, new_hx = policy(torch.from_numpy(obs).float(), hx)
 
             action = Categorical(logits=step_logits).sample().item()  # TODO add gaussian noise to policy to explore?
 
@@ -41,7 +42,8 @@ def evaluate(env, policy, num_games=10, max_steps=100):
         obs = env.reset()
         hx = policy.get_init_hx()
         for _ in range(max_steps):
-            logits, value, hx = policy(torch.from_numpy(obs).float(), hx)
+            with torch.no_grad():
+                logits, value, hx = policy(torch.from_numpy(obs).float(), hx)
             obs, reward, done, info = env.step(logits.argmax(dim=-1).item())
             total_reward += reward
             if done:
