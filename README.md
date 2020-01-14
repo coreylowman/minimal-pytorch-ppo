@@ -8,7 +8,7 @@ The intent of this repo is to implement PPO in Pytorch in a minimal amount of co
   - [x] Feedforward
   - [x] LSTM
   - [x] GRU
-  - [ ] Conv Policy
+  - [ ] Conv
 - Action Spaces
   - [x] Categorical Action Spaces
   - [ ] Continuous Action Spaces
